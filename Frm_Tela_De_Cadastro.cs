@@ -25,26 +25,36 @@ namespace Projeto_Agenda_Destruidora_De_Mundos_Do_Alex
             if (textBox_nome.Text == "")
             {
                 erro = true;
+                cadeado_trancado.Visible = true;
+                cadeado_destrancado.Visible = false;
             }
 
             if (textBox_usuario.Text == "")
             {
                 erro = true;
+                cadeado_trancado.Visible = true;
+                cadeado_destrancado.Visible = false;
             }
 
             if (textBox_telefone.Text.Length < 11)
             {
                 erro = true;
+                cadeado_trancado.Visible = true;
+                cadeado_destrancado.Visible = false;
             }
 
             if (textBox_senha.Text.Length < 8)
             {
                 erro = true;
+                cadeado_trancado.Visible = true;
+                cadeado_destrancado.Visible = false;
             }
 
             if (erro == false)
             {
                 botao_cadastrar_final.Enabled = true;
+                cadeado_trancado.Visible = false;
+                cadeado_destrancado.Visible = true;
             }
 
             //ou

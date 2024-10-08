@@ -38,6 +38,10 @@
             textBox_nome = new TextBox();
             textBox_telefone = new TextBox();
             textBox_senha = new TextBox();
+            cadeado_trancado = new PictureBox();
+            cadeado_destrancado = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)cadeado_trancado).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cadeado_destrancado).BeginInit();
             SuspendLayout();
             // 
             // lbl_senha
@@ -161,12 +165,35 @@
             textBox_senha.TextAlign = HorizontalAlignment.Center;
             textBox_senha.TextChanged += textBox_senha_TextChanged;
             // 
+            // cadeado_trancado
+            // 
+            cadeado_trancado.Image = Properties.Resources.cadeado_2_trancado;
+            cadeado_trancado.Location = new Point(143, 328);
+            cadeado_trancado.Name = "cadeado_trancado";
+            cadeado_trancado.Size = new Size(100, 100);
+            cadeado_trancado.SizeMode = PictureBoxSizeMode.StretchImage;
+            cadeado_trancado.TabIndex = 20;
+            cadeado_trancado.TabStop = false;
+            // 
+            // cadeado_destrancado
+            // 
+            cadeado_destrancado.Image = Properties.Resources.cadeado_2_destrancado;
+            cadeado_destrancado.Location = new Point(143, 328);
+            cadeado_destrancado.Name = "cadeado_destrancado";
+            cadeado_destrancado.Size = new Size(100, 100);
+            cadeado_destrancado.SizeMode = PictureBoxSizeMode.StretchImage;
+            cadeado_destrancado.TabIndex = 21;
+            cadeado_destrancado.TabStop = false;
+            cadeado_destrancado.Visible = false;
+            // 
             // Frm_Tela_De_Cadastro
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Indigo;
             ClientSize = new Size(400, 500);
+            Controls.Add(cadeado_destrancado);
+            Controls.Add(cadeado_trancado);
             Controls.Add(textBox_senha);
             Controls.Add(textBox_telefone);
             Controls.Add(textBox_usuario);
@@ -181,6 +208,8 @@
             Name = "Frm_Tela_De_Cadastro";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Frm_Tela_De_Cadastro";
+            ((System.ComponentModel.ISupportInitialize)cadeado_trancado).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cadeado_destrancado).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -197,5 +226,7 @@
         private TextBox textBox_nome;
         private TextBox textBox_telefone;
         private TextBox textBox_senha;
+        private PictureBox cadeado_trancado;
+        private PictureBox cadeado_destrancado;
     }
 }
