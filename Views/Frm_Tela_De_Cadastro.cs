@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Projeto_Agenda_Destruidora_De_Mundos_Do_Alex.Controller;
 using Projeto_Agenda_Destruidora_De_Mundos_Do_Alex.Data;
 using System;
 using System.Collections.Generic;
@@ -58,44 +59,31 @@ namespace Projeto_Agenda_Destruidora_De_Mundos_Do_Alex
                 cadeado_trancado.Visible = false;
                 cadeado_destrancado.Visible = true;
             }
-
-            //ou
-
-            //textBox_nome.Text != "" && textBox_usuario.Text != "" && textBox_telefone.Text.Length >= 11 && textBox_senha.Text.Length >= 8)
-            //{
-            //    botao_cadastrar_final.Enabled = true;
-            //}
-
-            //else
-            //{
-            //    botao_cadastrar_final.Enabled = false;
-            //}
+            
+           
         }
 
         private void botao_cadastrar_final_Click(object sender, EventArgs e)
         {
-            MySqlConnection conexao = ConexãoDB.criador_conexao();
-            //Abrindo conexão
-            conexao.Open();
+            // Obtendo as informações cadastradas do formulario
+            string nome = textBox_nome.Text;
+            string usuario = textBox_usuario.Text;
+            string telefone = textBox_telefone.Text;
+            string senha = textBox_senha.Text;
 
-            //Criando comando SQL para inserir o Usuário
-            string sql = $"INSERT INTO tb_usuarios (nome, usuario, telefone, senha) VALUES (@nome, @usuario, @telefone, @senha)";
+            // Instanciado
+            UserController user_controller = new UserController();
 
-            //Criando o comando
-            MySqlCommand comando = new MySqlCommand(sql, conexao);
-
-            comando.Parameters.AddWithValue("@nome", textBox_nome.Text);
-            comando.Parameters.AddWithValue("@usuario", textBox_usuario.Text);
-            comando.Parameters.AddWithValue("@telefone", textBox_telefone.Text);
-            comando.Parameters.AddWithValue("@senha", textBox_senha.Text);
-
-            // Executando o comando, "ExecuteNonQuery();" executa o comando mas não mostra ou retorna nada
-            comando.ExecuteNonQuery();
-
-            //Fechando a conexão com o banco de dados
-            conexao.Close();
-            
-            MessageBox.Show("Cadastro Efetuado com sucesso! \n Você já pode Efetuar o Login");
+            // colocando o usuario
+            bool resultado = user_controller.AddUser(nome, usuario, telefone, senha);
+            if (resultado)
+            {
+                MessageBox.Show("Cadastro Efetuado com sucesso! \n Você já pode Efetuar o Login");
+            }
+            else
+            {
+                MessageBox.Show("Não foi possivel realizar o cadastro! tente novamente");
+            }
 
             this.Close();
         }
@@ -127,6 +115,11 @@ namespace Projeto_Agenda_Destruidora_De_Mundos_Do_Alex
             textBox_telefone.Clear();
             textBox_senha.Clear();
             this.Visible = false;
+        }
+
+        private void Frm_Tela_De_Cadastro_Load(object sender, EventArgs e)
+        {
+
         }
     }
 } 

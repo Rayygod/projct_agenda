@@ -208,6 +208,7 @@
             Name = "Frm_Tela_De_Cadastro";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Frm_Tela_De_Cadastro";
+            Load += Frm_Tela_De_Cadastro_Load;
             ((System.ComponentModel.ISupportInitialize)cadeado_trancado).EndInit();
             ((System.ComponentModel.ISupportInitialize)cadeado_destrancado).EndInit();
             ResumeLayout(false);
